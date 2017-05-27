@@ -417,7 +417,7 @@ function fancyList(state, startLine, endLine, silent) {
 		if (markerCharCode !== state.src.charCodeAt(posAfterMarker - 1)) { break; }
 	}
 
-	// Finilize list
+	// Finalize list
 	if (isOrdered) {
 		token = state.push('ordered_list_close', 'ol', -1);
 	} else {
