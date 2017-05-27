@@ -2,7 +2,7 @@
 
 'use strict';
 
-// Search `[-+*][\n ]?`, returns next pos arter marker on success
+// Search `[-+*][\n ]`, returns next pos arter marker on success
 // or -1 on fail.
 function skipBulletListMarker(state, startLine) {
 	var marker, pos, max, ch;
@@ -18,7 +18,7 @@ function skipBulletListMarker(state, startLine) {
 		return -1;
 	}
 
-	if (pos <= max) {
+	if (pos < max) {
 		ch = state.src.charCodeAt(pos);
 
 		if (ch !== 0x09/* tab */ && ch !== 0x20/* space */) {
@@ -30,7 +30,7 @@ function skipBulletListMarker(state, startLine) {
 	return pos;
 }
 
-// Search `(\w{1,2}|[IVXivx]+)[.)][\n ]?`, returns
+// Search `(\w{1,2}|[IVXivx]+)[.)][\n ]`, returns
 // next pos after marker on success or -1 on fail.
 function skipOrderedListMarker(state, startLine) {
 	var ch,
@@ -81,7 +81,7 @@ function skipOrderedListMarker(state, startLine) {
 	}
 
 
-	if (pos <= max) {
+	if (pos < max) {
 		ch = state.src.charCodeAt(pos);
 
 		if (ch !== 0x09/* tab */ && ch !== 0x20/* space */) {
